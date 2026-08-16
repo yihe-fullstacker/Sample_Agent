@@ -1,0 +1,43 @@
+PIIMiddleware 配置完成
+- 邮箱脱敏策略: redact
+- 电话号码策略: redact
+================================ Human Message =================================
+
+我的邮箱是: huge@itcast.cn,我的电话是[REDACTED_PHONE_NUMBER],你要记住这些信息，后续要用到。如果记住了请确认一遍。
+================================== Ai Message ==================================
+
+好的，我已经记住了您提供的联系方式：
+
+1. **邮箱**：[REDACTED_EMAIL]  
+2. **电话**：[REDACTED_PHONE_NUMBER]（由于内容被隐藏，我无法看到具体号码，但您后续提到时我会按此记录使用。）
+
+请您放心，后续对话中如需使用这些信息，我会直接引用。如果电话有误或需要更新，随时告诉我即可。
+================================ Human Message =================================
+
+你好
+================================== Ai Message ==================================
+
+你好呀！很高兴见到你！😊
+
+我是DeepSeek，一个乐于助人的AI助手。无论你是想聊天、问问题、寻求建议，还是需要帮忙处理文件、解答疑惑，我都随时准备好了！
+
+今天有什么我可以帮你的吗？或者只是想随便聊聊也可以哦！✨
+================================ Human Message =================================
+
+帮我转2000元给王小明(6123008415124395223)
+================================== Ai Message ==================================
+
+I'll help you transfer 2000 yuan to 王小明. Let me process this transfer for you.
+Tool Calls:
+  transfer_money (call_00_hlueQIITYgbzeNoo5Cnf9961)
+ Call ID: call_00_hlueQIITYgbzeNoo5Cnf9961
+  Args:
+    amount: 2000
+    to: 王小明
+{'messages': [HumanMessage(content='帮我转2000元给王小明(6123008415124395223)', additional_kwargs={}, response_metadata={}, id='43c6e402-9fe0-4fac-9450-04fde491d042'), AIMessage(content="I'll help you transfer 2000 yuan to 王小明. Let me process this transfer for you.", additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completion_tokens': 84, 'prompt_tokens': 341, 'total_tokens': 425, 'completion_tokens_details': None, 'prompt_tokens_details': {'audio_tokens': None, 'cache_write_tokens': None, 'cached_tokens': 256}, 'prompt_cache_hit_tokens': 256, 'prompt_cache_miss_tokens': 85}, 'model_provider': 'deepseek', 'model_name': 'deepseek-v4-flash', 'system_fingerprint': 'fp_a18b46594c_prod0820_fp8_kvcache_20260402', 'id': '5bf92580-15c1-4247-978c-5b5b17ca4239', 'finish_reason': 'tool_calls', 'logprobs': None}, id='lc_run--019fdf62-b1c4-7fa3-8ae6-11af9cdde59f-0', tool_calls=[{'name': 'transfer_money', 'args': {'amount': 2000, 'to': '王小明'}, 'id': 'call_00_hlueQIITYgbzeNoo5Cnf9961', 'type': 'tool_call'}], invalid_tool_calls=[], usage_metadata={'input_tokens': 341, 'output_tokens': 84, 'total_tokens': 425, 'input_token_details': {'cache_read': 256}, 'output_token_details': {}})], '__interrupt__': [Interrupt(value={'action_requests': [{'name': 'transfer_money', 'args': {'amount': 2000, 'to': '王小明'}, 'description': '请确认转账操作'}], 'review_configs': [{'action_name': 'transfer_money', 'allowed_decisions': ['approve', 'reject', 'edit']}]}, id='78df4e3a0040dda353ad5f111b3a5bbd')]}
+{'action_requests': [{'args': {'amount': 2000, 'to': '王小明'},
+                      'description': '请确认转账操作',
+                      'name': 'transfer_money'}],
+ 'review_configs': [{'action_name': 'transfer_money',
+                     'allowed_decisions': ['approve', 'reject', 'edit']}]}
+{'messages': [HumanMessage(content='帮我转2000元给王小明(6123008415124395223)', additional_kwargs={}, response_metadata={}, id='43c6e402-9fe0-4fac-9450-04fde491d042'), AIMessage(content="I'll help you transfer 2000 yuan to 王小明. Let me process this transfer for you.", additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completion_tokens': 84, 'prompt_tokens': 341, 'total_tokens': 425, 'completion_tokens_details': None, 'prompt_tokens_details': {'audio_tokens': None, 'cache_write_tokens': None, 'cached_tokens': 256}, 'prompt_cache_hit_tokens': 256, 'prompt_cache_miss_tokens': 85}, 'model_provider': 'deepseek', 'model_name': 'deepseek-v4-flash', 'system_fingerprint': 'fp_a18b46594c_prod0820_fp8_kvcache_20260402', 'id': '5bf92580-15c1-4247-978c-5b5b17ca4239', 'finish_reason': 'tool_calls', 'logprobs': None}, id='lc_run--019fdf62-b1c4-7fa3-8ae6-11af9cdde59f-0', tool_calls=[{'name': 'transfer_money', 'args': {'amount': 2000, 'to': '王小明'}, 'id': 'call_00_hlueQIITYgbzeNoo5Cnf9961', 'type': 'tool_call'}], invalid_tool_calls=[], usage_metadata={'input_tokens': 341, 'output_tokens': 84, 'total_tokens': 425, 'input_token_details': {'cache_read': 256}, 'output_token_details': {}}), ToolMessage(content='已向账户王小明转账2000元', name='transfer_money', id='7ce4d9b3-0231-46fc-a9f8-235f6c647add', tool_call_id='call_00_hlueQIITYgbzeNoo5Cnf9961'), AIMessage(content='已经为您完成转账！\n\n- **收款人**：王小明\n- **转账金额**：2000元\n- **状态**：转账成功\n\n如需进一步帮助，请随时告诉我。', additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completion_tokens': 40, 'prompt_tokens': 445, 'total_tokens': 485, 'completion_tokens_details': None, 'prompt_tokens_details': {'audio_tokens': None, 'cache_write_tokens': None, 'cached_tokens': 384}, 'prompt_cache_hit_tokens': 384, 'prompt_cache_miss_tokens': 61}, 'model_provider': 'deepseek', 'model_name': 'deepseek-v4-flash', 'system_fingerprint': 'fp_a18b46594c_prod0820_fp8_kvcache_20260402', 'id': 'fb0caed8-9068-471c-a4dd-48f6ad7737c3', 'finish_reason': 'stop', 'logprobs': None}, id='lc_run--019fdf62-b8a3-7f53-95af-466e8db2e3b2-0', tool_calls=[], invalid_tool_calls=[], usage_metadata={'input_tokens': 445, 'output_tokens': 40, 'total_tokens': 485, 'input_token_details': {'cache_read': 384}, 'output_token_details': {}})]}
