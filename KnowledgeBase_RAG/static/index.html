@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>知了 · 个人知识库 RAG</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="logo">知</span>
+        <div>
+          <h1>知了</h1>
+          <p class="tag">个人知识库 RAG Agent</p>
+        </div>
+      </div>
+
+      <section class="panel">
+        <h3>知识库状态</h3>
+        <div id="stats" class="stats">加载中…</div>
+      </section>
+
+      <section class="panel">
+        <h3>上传文档</h3>
+        <p class="hint">支持 .md / .txt</p>
+        <input type="file" id="fileInput" accept=".md,.txt,.markdown" />
+        <button id="uploadBtn" class="btn primary">上传并索引</button>
+        <div id="uploadMsg" class="msg"></div>
+      </section>
+
+      <section class="panel">
+        <h3>粘贴文本</h3>
+        <textarea id="pasteText" rows="4" placeholder="直接粘贴笔记内容…"></textarea>
+        <input type="text" id="pasteName" placeholder="文件名 note.md" value="note.md" />
+        <button id="pasteBtn" class="btn">添加文本</button>
+      </section>
+
+      <section class="panel">
+        <h3>已索引文档</h3>
+        <ul id="docList" class="doc-list"></ul>
+        <button id="clearBtn" class="btn danger small">清空知识库</button>
+      </section>
+    </aside>
+
+    <!-- 主对话区 -->
+    <main class="main">
+      <header class="chat-header">
+        <h2>对话</h2>
+        <label class="toggle">
+          <input type="checkbox" id="useRag" checked />
+          启用知识库检索
+        </label>
+      </header>
+
+      <div id="messages" class="messages">
+        <div class="msg-bubble system">
+          你好，我是<strong>知了</strong>。上传笔记后，我可以基于你的知识库回答问题。
+          也可以先用默认「评估.md」教育学知识试一试。
+        </div>
+      </div>
+
+      <div class="composer">
+        <textarea id="input" rows="2" placeholder="输入问题，例如：孔子的教育思想有哪些？"></textarea>
+        <button id="sendBtn" class="btn primary">发送</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
