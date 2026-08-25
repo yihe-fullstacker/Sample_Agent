@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="星尘 · 个人智能助手：管理日程、待办与邮件，智能规划每一天" />
+  <meta name="theme-color" content="#060a13" />
+  <title>星尘 · 个人智能助手</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236d5cf6'/%3E%3Cstop offset='1' stop-color='%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' fill='url(%23g)'/%3E%3Cpath d='M12 4.5l1.8 5.4 5.4 1.8-5.4 1.8L12 19l-1.8-5.5-5.4-1.8 5.4-1.8z' fill='white'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- 侧边栏 -->
+    <aside class="sidebar" id="sidebar" aria-label="导航栏">
+      <div class="sidebar-head">
+        <div class="logo">
+          <div class="logo-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/>
+              <path d="M19 3l.6 1.8L21.5 5l-1.9.7L19 7.5l-.6-1.8L16.5 5l1.9-.2z"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <h1>星尘</h1>
+            <p>Personal AI Assistant</p>
+          </div>
+        </div>
+
+        <button class="new-chat-btn" id="newChatBtn" title="开始新对话">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          新对话
+        </button>
+      </div>
+
+      <nav class="nav">
+        <div class="nav-section">
+          <div class="nav-title">快捷操作</div>
+          <button class="nav-btn" data-quick="帮我看看明天的日程">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span>明天日程</span>
+          </button>
+          <button class="nav-btn" data-quick="根据我的 Todo 和邮件，帮我安排一下明天的工作">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            <span>智能安排明天</span>
+          </button>
+          <button class="nav-btn" data-quick="检查明天有没有时间冲突，给我提出调整建议">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <span>冲突检测与建议</span>
+          </button>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-title">信息查询</div>
+          <button class="nav-btn" data-quick="列出所有高优先级 Todo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>高优 Todo</span>
+          </button>
+          <button class="nav-btn" data-quick="查看我的未读邮件">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span>未读邮件</span>
+          </button>
+          <button class="nav-btn" data-quick="列出所有待办事项">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+            <span>全部 Todo</span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="conn-status" id="connStatus" title="后端服务状态">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="connText">正在连接服务…</span>
+        </div>
+        <p>Powered by LangGraph · FastAPI</p>
+      </div>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- 主区域 -->
+    <main class="main">
+      <header class="header">
+        <button class="icon-btn menu-btn" id="menuBtn" title="打开导航" aria-label="打开导航">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+
+        <div class="header-title">
+          <h2>星尘助手</h2>
+          <span class="header-sub" id="msgCount">开始一段对话吧</span>
+        </div>
+
+        <div class="header-actions">
+          <button class="icon-btn" id="clearBtn" title="清空当前对话" aria-label="清空当前对话">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="chat" id="chat" aria-live="polite"></div>
+
+      <footer class="composer">
+        <div class="composer-box" id="composerBox">
+          <textarea
+            id="input"
+            rows="1"
+            placeholder="输入消息，例如：帮我安排明天的工作…"
+            autocomplete="off"
+            aria-label="消息输入框"
+          ></textarea>
+          <button class="send-btn" id="sendBtn" title="发送消息 (Enter)" aria-label="发送消息">
+            <svg class="ico-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+            <svg class="ico-stop" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="6" y="6" width="12" height="12" rx="2"/>
+            </svg>
+          </button>
+        </div>
+        <p class="composer-hint">Enter 发送 · Shift + Enter 换行 · 日程 / 待办 / 邮件 / 智能安排</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
