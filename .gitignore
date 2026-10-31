@@ -36,3 +36,7 @@ logs/
 # SQLite temporary files
 *.db-shm
 *.db-wal
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
